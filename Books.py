@@ -32,27 +32,20 @@ def returnbook(book, person):
         book["stock"] = book["stock"] + 1
 
 
-def printReport(book1, book2, book3, book4, book5):
-    print("pablo :          in:", book1["stock"], "/   out", book1["initialStock"] - book1["stock"])
-    print("basketball : ", "in:", book2["stock"], "/   out:", book2["initialStock"] - book2["stock"])
-    print("football :         in:", book3["stock"], "/    out", book3["initialStock"] - book3["stock"])
-    print("ninija :            in", book4["stock"], "/     out", book4["initialStock"] - book4["stock"])
-    print("freeFire :             in", book5["stock"], "/      out:", book5["initialStock"] - book5["stock"])
+def printReport(books):
+    for book in books:
+        print(book["name"], ":          in:", book["stock"], "/   out",
+              book["initialStock"] - book["stock"])
 
 
-
-def printEtatOfbook(book):
+def printEtatOfOnebook(book):
     if book["person"] != None:
-        print(book["name"], "    ", book["person"]["name"] , book["person"]["number"])
+        print(book["name"], "    ", book["person"]["name"], book["person"]["number"])
 
 
-def printEtatDuLieu(book1, book2, book3, book4, book5):
+def printEtatDuLieu(books):
     print("******Etat du lieu ***************")
     print("Name of the book      name of person         Phone number")
-    printEtatOfbook(book1)
-    printEtatOfbook(book2)
-    printEtatOfbook(book3)
-    printEtatOfbook(book4)
-    printEtatOfbook(book5)
+    for book in books:
+        printEtatOfOnebook(book)
     print("******Fin etat du lieu ***************")
-
