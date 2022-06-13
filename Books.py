@@ -1,4 +1,4 @@
-from affichage import afficherStock
+from  affichage import  afficherStock
 
 
 def takebook(book, person):
