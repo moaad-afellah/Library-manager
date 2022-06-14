@@ -1,6 +1,3 @@
-from affichage import afficherStock
-
-
 def takebook(book, person):
     afficherStock(book)
     if book["gold"] == False:
@@ -32,15 +29,26 @@ def returnbook(book, person):
         book["stock"] = book["stock"] + 1
 
 
+def afficherStock(book):
+    if book["stock"] > 0:
+        print("Yes , there is one in the stock")
+    if book["stock"] <= 0:
+        print("Sorry!! this  book is not in the stock")
+    return
+
+
 def printReport(books):
     for book in books:
         print(book["name"], ":          in:", book["stock"], "/   out",
               book["initialStock"] - book["stock"])
 
 
-def printEtatOfOnebook(book):
-    if book["person"] != None:
-        print(book["name"], "    ", book["person"]["name"], book["person"]["number"])
+def printEtatOfOnebook(books):
+    for book in books:
+        if book["person"] != None:
+            print(book["name"], "    ", book["person"]["name"], book["person"]["numberPhone"])
+        elif book["person"] == None:
+            print(book["name"], "    ", book["person"])
 
 
 def printEtatDuLieu(books):
