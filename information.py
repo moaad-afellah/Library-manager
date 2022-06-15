@@ -1,7 +1,8 @@
 import GLOABL_STATE
-from  Books import listBoos
-from  Books import  listPerson
-from  Books import  takebook
+from Books import listBoos
+from Books import listPerson
+from Books import takebook
+
 
 def donneeOFbook():
     booksTmp = []
@@ -38,16 +39,19 @@ def donneeOfPerson():
 
 def updateBooks(book):
     print(book["name"])
-    name = input("name : ")
+    name = input("nam"
+                 ""
+                 "e : ")
     stock = int(input("stock : "))
     goldInput = int(input("it is gold[1/0]: "))
     if goldInput == 1:
         gold = True
     elif goldInput == 0:
         gold = False
-        book = {"name": name, "stock": stock, "gold": gold, "initialStock": stock, "person": None}
+    book = {"name": name, "stock": stock, "gold": gold, "initialStock": stock, "person": None}
 
     return book
+
 
 def updatePerson(person):
     print(person["name"])
@@ -56,9 +60,10 @@ def updatePerson(person):
     person = {"name": name, "numberPhone": number}
     return person
 
+
 def DetakeBook():
     listBoos(GLOABL_STATE.books)
     listPerson(GLOABL_STATE.persons)
     idPerson = int(input("enter number of person :"))
     idBook = int(input("enter number of Book :"))
-    takebook(GLOABL_STATE.books[idBook-1],GLOABL_STATE.persons[idPerson-1])
+    takebook(GLOABL_STATE.books[idBook - 1], GLOABL_STATE.persons[idPerson - 1])

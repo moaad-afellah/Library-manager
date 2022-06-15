@@ -2,11 +2,11 @@ from information import donneeOFbook
 from Books import printReport
 from Books import printEtatOfOnebook
 from information import donneeOfPerson
-from  information import DetakeBook
-from  Books import listBoos
-from  information import updateBooks
-from  Books import  listPerson
-from  information import  updatePerson
+from information import DetakeBook
+from Books import listBoos
+from information import updateBook
+from Books import listPerson
+from information import updatePerson
 import os
 import GLOABL_STATE
 import pyautogui
@@ -64,14 +64,14 @@ def Welcome():
 
     elif inputNumber == 5:
         listBoos(GLOABL_STATE.books)
-        number=int(input("please give me number of Books :"))
-        GLOABL_STATE.books[number-1] = updateBooks(GLOABL_STATE.books[number-1])
+        number = int(input("Please give me number of book :"))
+        GLOABL_STATE.books[number - 1] = updateBook(GLOABL_STATE.books[number - 1])
         input()
 
     elif inputNumber == 6:
         listPerson(GLOABL_STATE.persons)
-        number=int(input("please give me number of Person :"))
-        GLOABL_STATE.persons[number-1] = updatePerson(GLOABL_STATE.persons[number-1])
+        number = int(input("please give me number of Person :"))
+        GLOABL_STATE.persons[number - 1] = updatePerson(GLOABL_STATE.persons[number - 1])
         input()
 
     elif inputNumber == 7:

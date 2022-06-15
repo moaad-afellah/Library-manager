@@ -62,24 +62,17 @@ def printEtatDuLieu(books):
     print("******Fin etat du lieu ***************")
 
 
-def listBoos (books):
-    for book in books :
-        print(book["name"])
+def listBoos(books):
+    print("THE BOOKS: ")
+    n = 1
+    for book in books:
+        print(n, "-", book["name"])
+        n = n + 1
 
-def listBoos (books):
-    print("THE BOOKS :")
-    n = 0
-    for book in books :
-        n = n+1
-        print(n ,"-",book["name"])
 
-def listPerson (persons):
-    print("THE PERSONS  : ")
-    m = 0
-    for person in persons :
-        m = m+1
+def listPerson(persons):
+    print("THE PERSONS: ")
+    m = 1
+    for person in persons:
         print(m, "-", person["name"])
-
-
-
-
+        m = m + 1
