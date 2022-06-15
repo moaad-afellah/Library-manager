@@ -12,10 +12,13 @@ def takebook(book, person):
         print(book["name"], "is gold")
         password = int(input("please enter password: "))
         if password == 2006:
+            print("Good , password is correct !!!")
             book["person"] = person
             book["stock"] = book["stock"] - 1
+            input()
         else:
             print("Sorry , password is incorrect !!!")
+            input()
             return
 
 
@@ -57,3 +60,26 @@ def printEtatDuLieu(books):
     for book in books:
         printEtatOfOnebook(book)
     print("******Fin etat du lieu ***************")
+
+
+def listBoos (books):
+    for book in books :
+        print(book["name"])
+
+def listBoos (books):
+    print("THE BOOKS :")
+    n = 0
+    for book in books :
+        n = n+1
+        print(n ,"-",book["name"])
+
+def listPerson (persons):
+    print("THE PERSONS  : ")
+    m = 0
+    for person in persons :
+        m = m+1
+        print(m, "-", person["name"])
+
+
+
+

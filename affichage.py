@@ -1,8 +1,12 @@
 from information import donneeOFbook
 from Books import printReport
 from Books import printEtatOfOnebook
-from information import donneeOfPersonAndTakenBook
-from Books import takebook
+from information import donneeOfPerson
+from  information import DetakeBook
+from  Books import listBoos
+from  information import updateBooks
+from  Books import  listPerson
+from  information import  updatePerson
 import os
 import GLOABL_STATE
 import pyautogui
@@ -28,9 +32,14 @@ def Welcome():
     inputNumber = int(input("""
     Enter 1 : in order to enter books.
     Enter 2 : in order to enter persons.
-    Enter 3 : in order to  show Report of status of boos.
-    Enter 4 : in order to show the owners of books.
-    Enter 5 : in order to exit.
+    Entre 3 : list the Books.
+    Enter 4 : list the Person.
+    Enter 5 : update the Books. 
+    Enter 6 : update the Persons.
+    Enter 7 : take Books.
+    Enter 8: in order to  show Report of status of boos.
+    Enter 9 : in order to show the owners of books.
+    Enter 10 :in order to exit.
     
         You choice: 
     """))
@@ -38,19 +47,46 @@ def Welcome():
     if inputNumber == 1:
         bk = donneeOFbook()
         GLOABL_STATE.books = GLOABL_STATE.books + bk
+
+
     elif inputNumber == 2:
-        pr = donneeOfPersonAndTakenBook()
+        pr = donneeOfPerson()
         GLOABL_STATE.persons = GLOABL_STATE.persons + pr
-        for person in pr:
-            takebook(GLOABL_STATE.books[person["takenBookIndex"] - 1], person)
+
+
     elif inputNumber == 3:
+        listBoos(GLOABL_STATE.books)
+        input()
+
+    elif inputNumber == 4:
+        listPerson(GLOABL_STATE.persons)
+        input()
+
+    elif inputNumber == 5:
+        listBoos(GLOABL_STATE.books)
+        number=int(input("please give me number of Books :"))
+        GLOABL_STATE.books[number-1] = updateBooks(GLOABL_STATE.books[number-1])
+        input()
+
+    elif inputNumber == 6:
+        listPerson(GLOABL_STATE.persons)
+        number=int(input("please give me number of Person :"))
+        GLOABL_STATE.persons[number-1] = updatePerson(GLOABL_STATE.persons[number-1])
+        input()
+
+    elif inputNumber == 7:
+        DetakeBook()
+
+    elif inputNumber == 8:
         printReport(GLOABL_STATE.books)
         input()
-    elif inputNumber == 4:
+
+    elif inputNumber == 9:
         printEtatOfOnebook(GLOABL_STATE.books)
         input()
-    elif inputNumber == 5:
+
+    elif inputNumber == 10:
         print("Good bye")
-        exit()lùk
-    clearConsole
+        exit()
+    clearConsole()
     Welcome()
