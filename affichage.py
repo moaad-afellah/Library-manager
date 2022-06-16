@@ -10,6 +10,7 @@ from information import updatePerson
 import os
 import GLOABL_STATE
 import pyautogui
+from CommonLibrary.Input.ControllerInput import input_Int
 
 
 def clearConsoleCmd():
@@ -29,7 +30,7 @@ def clearConsole():
 
 def Welcome():
     print('         Hello sir,              ')
-    inputNumber = int(input("""
+    print("""
     Enter 1 : in order to enter books.
     Enter 2 : in order to enter persons.
     Entre 3 : list the Books.
@@ -40,9 +41,9 @@ def Welcome():
     Enter 8: in order to  show Report of status of boos.
     Enter 9 : in order to show the owners of books.
     Enter 10 :in order to exit.
-    
-        You choice: 
-    """))
+        
+    """)
+    inputNumber = input_Int("You choice: ")
     clearConsole()
     if inputNumber == 1:
         bk = donneeOFbook()
@@ -64,13 +65,13 @@ def Welcome():
 
     elif inputNumber == 5:
         listBoos(GLOABL_STATE.books)
-        number = int(input("Please give me number of book :"))
+        number = input_Int("Please give me number of book :")
         GLOABL_STATE.books[number - 1] = updateBook(GLOABL_STATE.books[number - 1])
         input()
 
     elif inputNumber == 6:
         listPerson(GLOABL_STATE.persons)
-        number = int(input("please give me number of Person :"))
+        number = input_Int("please give me number of Person :")
         GLOABL_STATE.persons[number - 1] = updatePerson(GLOABL_STATE.persons[number - 1])
         input()
 
@@ -88,5 +89,7 @@ def Welcome():
     elif inputNumber == 10:
         print("Good bye")
         exit()
+    else:
+        print('No cption for this number:', inputNumber)
     clearConsole()
     Welcome()

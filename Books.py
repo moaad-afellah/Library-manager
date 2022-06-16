@@ -1,3 +1,6 @@
+from CommonLibrary.Input.ControllerInput import input_Int
+
+
 def takebook(book, person):
     afficherStock(book)
     if book["gold"] == False:
@@ -10,7 +13,7 @@ def takebook(book, person):
         if book["stock"] == 0:
             return
         print(book["name"], "is gold")
-        password = int(input("please enter password: "))
+        password = input_Int("please enter password: ")
         if password == 2006:
             print("Good , password is correct !!!")
             book["person"] = person
