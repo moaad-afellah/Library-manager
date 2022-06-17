@@ -6,6 +6,7 @@ from information import DetakeBook
 from Books import listBoos
 from information import updateBook
 from Books import listPerson
+from  Books import  searchBook
 from information import updatePerson
 import os
 import GLOABL_STATE
@@ -40,13 +41,14 @@ def Welcome():
     Enter 7 : take Books.
     Enter 8: in order to  show Report of status of boos.
     Enter 9 : in order to show the owners of books.
-    Enter 10 :in order to exit.
+    Enter 10 : search par name of book.
+    Enter 11 :in order to exit.
         
     """)
     inputNumber = input_Int("You choice: ")
     clearConsole()
     if inputNumber == 1:
-        bk = donneeOFbook()
+        bk  = donneeOFbook()
         GLOABL_STATE.books = GLOABL_STATE.books + bk
 
 
@@ -86,9 +88,18 @@ def Welcome():
         printEtatOfOnebook(GLOABL_STATE.books)
         input()
 
+
     elif inputNumber == 10:
+        nameOFbookSearch = input("Give me name of book: ")
+        searchBook(nameOFbookSearch,GLOABL_STATE.books)
+        input()
+
+
+    elif inputNumber == 11:
         print("Good bye")
         exit()
+
+
     else:
         print('No cption for this number:', inputNumber)
     clearConsole()

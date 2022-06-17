@@ -6,7 +6,7 @@ def takebook(book, person):
     if book["gold"] == False:
         if book["stock"] == 0:
             return 0
-        book["person"] = person
+        book["person"].append(person)
         book["stock"] = book["stock"] - 1
         return
     if book["gold"] == True:
@@ -16,13 +16,13 @@ def takebook(book, person):
         password = input_Int("please enter password: ")
         if password == 2006:
             print("Good , password is correct !!!")
-            book["person"] = person
+            book["person"].append(person)
             book["stock"] = book["stock"] - 1
             input()
         else:
             print("Sorry , password is incorrect !!!")
             input()
-            return
+            return book , person
 
 
 def returnbook(book, person):
@@ -50,11 +50,15 @@ def printReport(books):
 
 
 def printEtatOfOnebook(books):
-    for book in books:
-        if book["person"] != None:
-            print(book["name"], "    ", book["person"]["name"], book["person"]["numberPhone"])
-        elif book["person"] == None:
-            print(book["name"], "    ", book["person"])
+        for book in books :
+            if len(book["person"]) > 0:
+                for person in book["person"]:
+                    print("",
+                    book["name"],
+                    "           ", person["name"], person["numberPhone"],
+                    "")
+            else:
+                print(" ",book["name"], "               ","No one")
 
 
 def printEtatDuLieu(books):
@@ -71,7 +75,7 @@ def listBoos(books):
     for book in books:
         print(n, "-", book["name"])
         n = n + 1
-
+    return n-1
 
 def listPerson(persons):
     print("THE PERSONS: ")
@@ -79,3 +83,16 @@ def listPerson(persons):
     for person in persons:
         print(m, "-", person["name"])
         m = m + 1
+    return m-1
+
+def searchBook(nameOFbookSearch, Books):
+    for book in Books:
+        if nameOFbookSearch == book["name"]:
+            print(book)
+            break
+        else:
+            print("sorry , not found.")
+
+
+
+

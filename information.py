@@ -3,7 +3,7 @@ from Books import listBoos
 from Books import listPerson
 from Books import takebook
 from CommonLibrary.Input.ControllerInput import input_Int
-
+from Books import printEtatOfOnebook
 
 def donneeOFbook():
     booksTmp = []
@@ -19,7 +19,8 @@ def donneeOFbook():
             gold = True
         elif goldInput == 0:
             gold = False
-        book = {"name": name, "stock": stock, "gold": gold, "initialStock": stock, "person": None}
+
+        book = {"name": name, "stock": stock, "gold": gold, "initialStock": stock, "person": []}
         booksTmp.append(book)
     return booksTmp
 
@@ -40,16 +41,15 @@ def donneeOfPerson():
 
 def updateBook(book):
     print(book["name"])
-    name = input("nam"
-                 ""
-                 "e : ")
+    name = input("name : ")
     stock = input_Int("stock : ")
     goldInput = input_Int("it is gold[1/0]: ")
     if goldInput == 1:
         gold = True
     elif goldInput == 0:
         gold = False
-    book = {"name": name, "stock": stock, "gold": gold, "initialStock": stock, "person": None}
+    persons = []
+    book = {"name": name, "stock": stock, "gold": gold, "initialStock": stock, persons: None}
 
     return book
 
@@ -63,8 +63,34 @@ def updatePerson(person):
 
 
 def DetakeBook():
-    listBoos(GLOABL_STATE.books)
-    listPerson(GLOABL_STATE.persons)
-    idPerson = input_Int("enter number of person :")
-    idBook = input_Int("enter number of Book :")
+    finBook = listBoos(GLOABL_STATE.books)
+    finPerson = listPerson(GLOABL_STATE.persons)
+    idPerson = finStockperson(finPerson)
+    idBook = finStockbook(finBook)
     takebook(GLOABL_STATE.books[idBook - 1], GLOABL_STATE.persons[idPerson - 1])
+    return
+
+
+def finStockperson(finPerson):
+    sp = False
+    while sp != True :
+        idPerson = input_Int("enter number of person :")
+        if finPerson >= idPerson :
+            print("ok")
+            sp = True
+        elif finPerson < idPerson :
+            print("sorry , !!")
+            sp = False
+    return idPerson
+
+def finStockbook(finBook):
+    sk = False
+    while sk != True :
+        idBook = input_Int("enter number of Book :")
+        if finBook >= idBook :
+            print("ok")
+            sk = True
+        elif finBook < idBook :
+            print("sorry , !!")
+            sk = False
+    return idBook
