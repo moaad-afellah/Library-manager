@@ -6,6 +6,7 @@ def takebook(book, person):
     if book["gold"] == False:
         if book["stock"] == 0:
             return 0
+        person["book"] = book["name"]
         book["person"].append(person)
         book["stock"] = book["stock"] - 1
         return
@@ -16,23 +17,31 @@ def takebook(book, person):
         password = input_Int("please enter password: ")
         if password == 2006:
             print("Good , password is correct !!!")
+            person["book"].append(book["name"])
             book["person"].append(person)
             book["stock"] = book["stock"] - 1
             input()
         else:
             print("Sorry , password is incorrect !!!")
             input()
-            return book , person
+            return book, person
 
 
-def returnbook(book, person):
-    afficherStock(book)
-    if book["stock"] >= book["initialStock"]:
-        print("No, this is not the book of this libray")
-    if book["stock"] < book["initialStock"]:
-        print("thank you ", person['name'], "!! for returning the book ")
-        book["person"] = None
-        book["stock"] = book["stock"] + 1
+def returnbook(books, Person):
+    Person["book"] = None
+    for book in books:
+        if book["stock"] == book["initialStock"]:
+            print("No, this is not the book of this libray")
+            continue
+        for person in book["person"]:
+            if person == Person:
+                if book["stock"] < book["initialStock"]:
+                    print("thank you ", Person['name'], "!! for returning the book ")
+                    Person["book"] = None
+                    book["person"].remove(Person)
+                    book["stock"] = book["stock"] + 1
+
+        input()
 
 
 def afficherStock(book):
@@ -50,15 +59,15 @@ def printReport(books):
 
 
 def printEtatOfOnebook(books):
-        for book in books :
-            if len(book["person"]) > 0:
-                for person in book["person"]:
-                    print("",
-                    book["name"],
-                    "           ", person["name"], person["numberPhone"],
-                    "")
-            else:
-                print(" ",book["name"], "               ","No one")
+    for book in books:
+        if len(book["person"]) > 0:
+            for person in book["person"]:
+                print("",
+                      book["name"],
+                      "           ", person["name"], person["numberPhone"],
+                      "")
+        else:
+            print(" ", book["name"], "               ", "No one")
 
 
 def printEtatDuLieu(books):
@@ -75,7 +84,8 @@ def listBoos(books):
     for book in books:
         print(n, "-", book["name"])
         n = n + 1
-    return n-1
+    return n - 1
+
 
 def listPerson(persons):
     print("THE PERSONS: ")
@@ -83,16 +93,34 @@ def listPerson(persons):
     for person in persons:
         print(m, "-", person["name"])
         m = m + 1
-    return m-1
+    return m - 1
+
 
 def searchBook(nameOFbookSearch, Books):
     for book in Books:
         if nameOFbookSearch == book["name"]:
             print(book)
             break
-        else:
-            print("sorry , not found.")
+    else:
+        print("sorry , not found.")
 
 
+def searchPerson(nameOFperson, Persons):
+    found = False
+    for person in Persons:
+        if nameOFperson in person["name"] and person["book"] is not None:
+            print(person["name"], ": ", person["book"]["name"])
+            found = True
+
+    if not found:
+        print("sorry , not found ")
 
 
+def searchPerson2(nameOFperson, Books):
+    for book in Books:
+        for person in book["person"]:
+            if person["name"] == nameOFperson:
+                print(person["name"], ": ", book["name"])
+                break
+            else:
+                print("sorry , not find ")

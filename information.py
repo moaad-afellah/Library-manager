@@ -3,7 +3,7 @@ from Books import listBoos
 from Books import listPerson
 from Books import takebook
 from CommonLibrary.Input.ControllerInput import input_Int
-from Books import printEtatOfOnebook
+
 
 def donneeOFbook():
     booksTmp = []
@@ -34,7 +34,7 @@ def donneeOfPerson():
         print("Give me the information of the person N°", max, ": ")
         name = input("Name: ")
         number = input_Int("Number phone : ")
-        person = {"name": name, "numberPhone": number}
+        person = {"name": name, "numberPhone": number, "book": []}
         personsTmp.append(person)
     return personsTmp
 
@@ -58,7 +58,7 @@ def updatePerson(person):
     print(person["name"])
     name = input("Name: ")
     number = input_Int("Number phone : ")
-    person = {"name": name, "numberPhone": number}
+    person = {"name": name, "numberPhone": number, "book": []}
     return person
 
 
@@ -73,24 +73,25 @@ def DetakeBook():
 
 def finStockperson(finPerson):
     sp = False
-    while sp != True :
+    while sp != True:
         idPerson = input_Int("enter number of person :")
-        if finPerson >= idPerson :
+        if finPerson >= idPerson:
             print("ok")
             sp = True
-        elif finPerson < idPerson :
+        elif finPerson < idPerson:
             print("sorry , !!")
             sp = False
     return idPerson
 
+
 def finStockbook(finBook):
     sk = False
-    while sk != True :
+    while sk != True:
         idBook = input_Int("enter number of Book :")
-        if finBook >= idBook :
+        if finBook >= idBook:
             print("ok")
             sk = True
-        elif finBook < idBook :
+        elif finBook < idBook:
             print("sorry , !!")
             sk = False
     return idBook
